@@ -7,12 +7,14 @@ import YahooFinance from 'yahoo-finance2';
 const yahooFinance = new YahooFinance();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://stockmarket-prediction.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"]
+}));
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", 
+    origin: ["https://stockmarket-prediction.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"], 
     methods: ["GET", "POST"]
   }
 });
@@ -213,9 +215,9 @@ updateTechnicalIndicators().then(() => {
   });
 });
 
-const PORT = 4001;
+const PORT = process.env.PORT || 4001;
 server.listen(PORT, async () => {
-  console.log(`NIFTY 100 Live Server running on http://127.0.0.1:${PORT}`);
+  console.log(`Live Market Server running on port ${PORT}`);
   
   // Initial data load
   await updateTechnicalIndicators();
