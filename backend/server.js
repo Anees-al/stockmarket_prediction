@@ -214,7 +214,7 @@ updateTechnicalIndicators().then(() => {
 });
 
 const PORT = 4001;
-server.listen(PORT, '127.0.0.1', async () => {
+server.listen(PORT, async () => {
   console.log(`NIFTY 100 Live Server running on http://127.0.0.1:${PORT}`);
   
   // Initial data load
