@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-// Connect to our live backend on http://127.0.0.1:4001
-const socket = io('http://127.0.0.1:4001', {
+// Connect to our live backend on Render
+const BACKEND_URL = 'https://stockmarket-prediction-1.onrender.com';
+const socket = io(BACKEND_URL, {
   reconnectionDelayMax: 10000,
 });
 
