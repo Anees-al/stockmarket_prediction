@@ -7,14 +7,12 @@ import YahooFinance from 'yahoo-finance2';
 const yahooFinance = new YahooFinance();
 
 const app = express();
-app.use(cors({
-  origin: ["https://stockmarket-prediction.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"]
-}));
+app.use(cors());
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://stockmarket-prediction.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"], 
+    origin: "*", 
     methods: ["GET", "POST"]
   }
 });
