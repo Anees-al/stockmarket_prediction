@@ -100,9 +100,10 @@ function App() {
       setStocks(data);
       
       // Notification Alerting
-      if (data && data.length > 0) {
+      if (Array.isArray(data)) {
         data.forEach(stock => {
-          if (stock.signal.includes("BUY") && !lastNotified.has(stock.symbol)) {
+          const signal = stock?.signal || "";
+          if (signal.includes("BUY") && !lastNotified.has(stock.symbol)) {
              sendStockNotification(stock);
              setLastNotified(prev => new Set([...prev, stock.symbol]));
           }
